@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "ecf-dgii-ssd": {
+      "source": "deuriib/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/ecf-dgii-ssd/SKILL.md",
+      "computedHash": "e7faa438f595e8fec4152ec5eece50d179d208af06c304da044be14365b5e1e7"
+    }
+  }
+}
