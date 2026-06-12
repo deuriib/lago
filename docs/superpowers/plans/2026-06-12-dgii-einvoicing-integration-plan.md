@@ -38,7 +38,7 @@ Update frontend constants to whitelist Dominican Republic (`DO`) for e-invoicing
   export const EINVOICING_PROVIDERS = {
     factur_x: 'factur_x',
     ubl: 'ubl',
-    ecf_sdd: 'ecf_sdd',
+    ecf_ssd: 'ecf_ssd',
     dgii_ecf: 'dgii_ecf',
   } as const
 
@@ -48,7 +48,7 @@ Update frontend constants to whitelist Dominican Republic (`DO`) for e-invoicing
       { value: 'ubl', label: 'UBL' },
     ],
     DO: [
-      { value: 'ecf_sdd', label: 'DGII ECF - SSD' },
+      { value: 'ecf_ssd', label: 'DGII ECF - SSD' },
       { value: 'dgii_ecf', label: 'DGII ECF' },
     ],
   }
@@ -103,7 +103,7 @@ Update billing entity creation/editing form to support selecting a provider.
 - [ ] **Step 1: Update Formik Initial Values and Effects**
   - Add `einvoicingProvider` to form initial values: `einvoicingProvider: billingEntity?.einvoicingProvider || undefined`.
   - Add `einvoicingProvider` to the GraphQL inputs (`CreateBillingEntityInput` & `UpdateBillingEntityInput`) if they do not automatically absorb it.
-  - Update country-change side-effects: If country is not in whitelist, set `einvoicingProvider` to `undefined`. If country changes and is in whitelist, default `einvoicingProvider` to the default one (`ecf_sdd` for `DO`, `factur_x` for `FR`).
+  - Update country-change side-effects: If country is not in whitelist, set `einvoicingProvider` to `undefined`. If country changes and is in whitelist, default `einvoicingProvider` to the default one (`ecf_ssd` for `DO`, `factur_x` for `FR`).
   
 - [ ] **Step 2: Add ComboBox dropdown for provider**
   Import `EINVOICING_PROVIDERS_BY_COUNTRY` from `../const`.
@@ -133,7 +133,7 @@ Expose the chosen provider name in the general settings view of the Billing Enti
 
 - [ ] **Step 1: Update fields array to display einvoicing provider**
   - Extract `einvoicingProvider` from `billingEntity`.
-  - Map provider value to its display label (e.g., `'ecf_sdd'` ➔ `'DGII ECF - SSD'`).
+  - Map provider value to its display label (e.g., `'ecf_ssd'` ➔ `'DGII ECF - SSD'`).
   - Add a field inside the `fields` array when `einvoicing` is active:
     ```typescript
     {

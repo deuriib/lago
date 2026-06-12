@@ -2,7 +2,7 @@
 
 ## Overview
 This document specifies the integration of the Dominican Republic (DGII) electronic invoicing (e-CF) providers into Lago. The user wants to support two different libraries/processes for `DO`:
-1. `ecf_dgii` (represented as `ecf_sdd` in the database) with display name **"DGII ECF - SSD"**.
+1. `ecf_dgii` (represented as `ecf_ssd` in the database) with display name **"DGII ECF - SSD"**.
 2. `dgii-ecf` (represented as `dgii_ecf` in the database) with display name **"DGII ECF"**.
 
 ---
@@ -13,14 +13,14 @@ This document specifies the integration of the Dominican Republic (DGII) electro
 - Ensure the database migration adding `einvoicing_provider` to `billing_entities` is executed.
 - Ensure the whitelisted countries for e-invoicing include `"DO"` (Dominican Republic).
 - Confirm the `EINVOICING_PROVIDERS` mapping handles:
-  - `ecf_sdd`
+  - `ecf_ssd`
   - `dgii_ecf`
 
 ### 2. Frontend Configuration
 - Update the country whitelist constant to include `"DO"`.
 - Define provider options per country:
   - For `DO`:
-    - `ecf_sdd` ➔ **"DGII ECF - SSD"**
+    - `ecf_ssd` ➔ **"DGII ECF - SSD"**
     - `dgii_ecf` ➔ **"DGII ECF"**
   - For `FR`:
     - `factur_x` ➔ **"Factur-X"**
@@ -31,7 +31,7 @@ This document specifies the integration of the Dominican Republic (DGII) electro
 - **Form Component:**
   - Update `BillingEntityCreateEdit.tsx` to handle `einvoicingProvider` in the Formik state.
   - Implement a conditional selector (dropdown) underneath the `einvoicing` switch. It should only be visible when `einvoicing` is `true`.
-  - Automatically pre-select the default provider when `einvoicing` is enabled (`ecf_sdd` for `DO` and `factur_x` for `FR`).
+  - Automatically pre-select the default provider when `einvoicing` is enabled (`ecf_ssd` for `DO` and `factur_x` for `FR`).
 - **Details Section:**
   - Update `InformationBlock.tsx` to display the selected e-invoicing provider name in the general settings view.
 

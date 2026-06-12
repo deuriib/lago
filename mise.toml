@@ -1,0 +1,25 @@
+[tools]
+ruby = "4.0.2"
+node = "24.16.0"
+pnpm = "10.34.1"
+
+[tasks.install]
+description = "Install all dependencies"
+run = [
+  "cd api && bundle install",
+  "cd front && pnpm install"
+]
+
+[tasks."backend:dev"]
+description = "Start Rails backend"
+dir = "{{cwd}}/api"
+run = "bin/rails server"
+
+[tasks."frontend:dev"]
+description = "Start React frontend"
+dir = "{{cwd}}/front"
+run = "pnpm dev"
+
+[tasks.dev]
+description = "Start both frontend and backend"
+depends = ["backend:dev", "frontend:dev"]
