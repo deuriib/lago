@@ -10,3 +10,4 @@
 /extra/ssl/nginx*
 /traefik/certs/*
 /deploy/letsencrypt
+/.agents/
